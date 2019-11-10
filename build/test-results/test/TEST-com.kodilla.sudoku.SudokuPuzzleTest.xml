@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.sudoku.SudokuPuzzleTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-11-10T22:25:36" hostname="DESKTOP-3VBO4BE" time="0.004">
+  <properties/>
+  <testcase name="testNumInBox" classname="com.kodilla.sudoku.SudokuPuzzleTest" time="0.003"/>
+  <testcase name="testNumInCol" classname="com.kodilla.sudoku.SudokuPuzzleTest" time="0.0"/>
+  <testcase name="testNumInRow" classname="com.kodilla.sudoku.SudokuPuzzleTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

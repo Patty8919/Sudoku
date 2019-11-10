@@ -20,7 +20,7 @@ public class SudokuGame {
         }
         backtrackSudokuSolver(0, 0, copy);
 
-        int numberOfValuesToKeep = (int) (0.22222 * (copy.getNumRows() * copy.getNumRows()));
+        int numberOfValuesToKeep = (int) (0.2 * (copy.getNumRows() * copy.getNumRows()));
 
         for (int i = 0; i < numberOfValuesToKeep; ) {
             int randomRow = randomGenerator.nextInt(puzzle.getNumRows());
@@ -35,7 +35,6 @@ public class SudokuGame {
     }
 
     private static boolean backtrackSudokuSolver(int r, int c, SudokuPuzzle puzzle) {
-
         if (!puzzle.inRange(r, c)) {
             return false;
         }

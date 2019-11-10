@@ -17,14 +17,12 @@ public class SudokuFrame extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
         JMenu file = new JMenu("Game");
-        JMenu newGame = new JMenu("New Game");
 
-        JMenuItem nineToNine = new JMenuItem("Start Game");
+        JMenuItem nineToNine = new JMenuItem("Nine to nine");
         nineToNine.addActionListener(new NewGameListener(SudokuPuzzleType.NINETONINE, 26));
 
-        newGame.add(nineToNine);
+        file.add(nineToNine);
 
-        file.add(newGame);
         menuBar.add(file);
         this.setJMenuBar(menuBar);
 
@@ -41,7 +39,9 @@ public class SudokuFrame extends JFrame {
         this.add(windowPanel);
 
         rebuildInterface(SudokuPuzzleType.NINETONINE, 26);
+
     }
+
 
     public void rebuildInterface(SudokuPuzzleType puzzleType, int fontSize) {
         SudokuPuzzle generatedPuzzle = new SudokuGame().generateRandomSudoku(puzzleType);
@@ -51,7 +51,7 @@ public class SudokuFrame extends JFrame {
 
         for (String value : generatedPuzzle.getValidValues()) {
             JButton b = new JButton(value);
-            b.setPreferredSize(new Dimension(40, 40));
+            b.setPreferredSize(new Dimension(45, 45));
             b.addActionListener(sPanel.new NumActionListener());
             buttonSelectionPanel.add(b);
         }
@@ -75,6 +75,7 @@ public class SudokuFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
             rebuildInterface(puzzleType, fontSize);
         }
+
     }
 
     public static void main(String[] args) {

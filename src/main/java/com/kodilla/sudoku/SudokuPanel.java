@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.font.FontRenderContext;
 
-
+@SuppressWarnings("serial")
 public class SudokuPanel extends JPanel {
 
     private SudokuPuzzle puzzle;
@@ -54,29 +54,33 @@ public class SudokuPanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(1.0f, 1.0f, 1.0f));
 
-        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+        int slotWidth = this.getWidth() / puzzle.getNumColumns();
+        int slotHeight = this.getHeight() / puzzle.getNumRows();
+
+        usedWidth = (this.getWidth()/puzzle.getNumColumns())*puzzle.getNumColumns();
+        usedHeight = (this.getHeight()/puzzle.getNumRows())*puzzle.getNumRows();
+
+        g2d.fillRect(0, 0, usedWidth, usedHeight);
 
         g2d.setColor(new Color(0.0f, 0.0f, 0.0f));
-        int slotWidth = this.getWidth() / 9;
-        int slotHeight = this.getHeight() / 9;
-
-        for (int x = 0; x <= this.getWidth(); x += slotWidth) {
-            if ((x / slotWidth) % 3 == 0) {
+        for (int x = 0; x <= usedWidth; x += slotWidth) {
+            if ((x / slotWidth) % puzzle.getBoxWidth() == 0) {
                 g2d.setStroke(new BasicStroke(2));
-                g2d.drawLine(x, 0, x, this.getHeight());
+                g2d.drawLine(x, 0, x, usedHeight);
             } else {
                 g2d.setStroke(new BasicStroke(1));
-                g2d.drawLine(x, 0, x, this.getHeight());
+                g2d.drawLine(x, 0, x, usedHeight);
             }
 
         }
-        for (int y = 0; y <= this.getHeight(); y += slotHeight) {
-            if ((y / slotHeight) % 3 == 0) {
+
+        for (int y = 0; y <=usedHeight; y += slotHeight) {
+            if ((y / slotHeight) % puzzle.getBoxHeight() == 0) {
                 g2d.setStroke(new BasicStroke(2));
-                g2d.drawLine(0, y, this.getWidth(), y);
+                g2d.drawLine(0, y, usedWidth, y);
             } else {
                 g2d.setStroke(new BasicStroke(1));
-                g2d.drawLine(0, y, this.getWidth(), y);
+                g2d.drawLine(0, y, usedWidth, y);
             }
 
         }
